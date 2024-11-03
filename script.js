@@ -1,18 +1,44 @@
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+    
     if (message.action === "A") {
-        f1()
+        let userFullName = "[name]"; // Déclare une variable en dehors de la fonction pour stocker le nom complet
+
+        getFullName(function(fullName) {
+            if (fullName) {
+                userFullName = fullName; // Assigner la valeur à la variable externe
+                console.log("fn",userFullName)
+            }
+            getApiKey(function(apiKey) {
+                var receiver = apiKey; // `receiver` contient maintenant la clé récupérée
+                f1(receiver,userFullName)
+                console.log("fn",userFullName)
+            });
+       
+        });
+        
+        
         
     }     
 });
 
 
 
+<<<<<<< HEAD
+function f1(apiKey,id) {
+    if (!apiKey){
+        alert("please enter an openAI api key")
+    }
+    console.log("apikey :",apiKey); // Affiche la clé récupérée
+    if(document.querySelector('input[name="subjectbox"]').value){
+        Object = document.querySelector('input[name="subjectbox"]').value
+=======
 function f1() {
 
     
 
     if(document.getElementById(':50').value){
         Object = document.getElementById(':50').value
+>>>>>>> parent of c72606c (better targeting of elements)
     }
     else{
         Object = "Il n'y a pas d'objet"
@@ -46,11 +72,16 @@ function f1() {
 
     Instructions :
 
-    Tu dois corriger et améliorer le mail suivant :
+    Tu dois corriger et améliorer le mail avec les conditions suivantes :
         - le mail doit etre formuler dans la langue du body et/ou de l'objet
         - si il n'y a pas d'objet, déduit le du corps
         - si il n'y a pas de corps propose en un a partir de l'objet
         - Précise "Objet :" avant de mettre l'objet et "Corps :" avant le corps
+<<<<<<< HEAD
+        - Les # sont des commentaire contenant informations ou instructions que tu devras prendre en compte la rédaction du mail
+    
+=======
+>>>>>>> parent of c72606c (better targeting of elements)
 
     L'objet :
     ${Object}
@@ -59,8 +90,9 @@ function f1() {
     Le corps du mail :
     ${Body}
 
+    ${id}
     `;
-    chatWithGPT(prompt)
+    chatWithGPT(prompt,apiKey)
     .then(response => {
         // Regex pour capturer l'objet jusqu'au mot "Corps :"
         const objectPattern = /Objet\s*:\s*([\s\S]*?)\n\s*Corps\s*:/;
@@ -90,15 +122,18 @@ function f1() {
         }
 
         if (output_Body) {
-            output_Body.innerText = final_Body; // Remplir le corps avec le texte extrait
+            output_Body.children[0].innerText = final_Body; // Remplir le corps avec le texte extrait
         }
     })
     .catch(error => console.error("Error:", error));
 }
 
-async function chatWithGPT(prompt) {
+async function chatWithGPT(prompt,apiKey) {
     // const apiKey =  // You said you will handle this
+<<<<<<< HEAD
+=======
     // I said you will handle this take you credit card and buy an API key
+>>>>>>> parent of c72606c (better targeting of elements)
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
     try {
@@ -114,7 +149,7 @@ async function chatWithGPT(prompt) {
                     { role: 'system', content: 'You are a helpful assistant.' },
                     { role: 'user', content: prompt },
                 ],
-                max_tokens: 500,  // Adjust this based on the expected output length
+                max_tokens: 2000,  // Adjust this based on the expected output length
                 temperature: 0.7, // Adjust this to control the creativity level
             }),
         });
@@ -130,4 +165,28 @@ async function chatWithGPT(prompt) {
         console.error('Error communicating with GPT API:', error);
         throw error;  // Rethrow the error so the caller knows something went wrong
     }
+}
+
+
+function saveApiKey(apiKey) {
+    chrome.storage.sync.set({ apiKey: apiKey }, function() {
+        console.log('API Key saved.',apiKey);
+    });
+}
+function getApiKey(callback) {
+    chrome.storage.sync.get(['apiKey'], function(result) {
+        callback(result.apiKey);
+    });
+}
+
+function getFullName(callback) {
+    chrome.storage.sync.get(['Name'], function(result) {
+        callback(result.Name);
+    });
+}
+
+function saveFullName(fullName) {
+    chrome.storage.sync.set({ Name: fullName }, function() {
+        console.log('Full name saved:', fullName);
+    });
 }

@@ -1,19 +1,20 @@
 {
     "manifest_version": 3,
-    "name": "Mail with GPT",
+    "name": "GPT & MAIL",
     "description": "your favorite assistant directly in your mail",
     "version": "1.0",
     "permissions": ["tabs",
       "activeTab",
-      "scripting"
+      "scripting",
+      "storage"
     ],
     "icons":
     {
-     "128": "Logo.png"
+     "128": "Logo1.png"
     },
     "action": {
       "default_popup": "popup.html",
-      "default_icon": "Logo.png"
+      "default_icon": "Logo1.png"
     },
     "content_scripts": [
       {
