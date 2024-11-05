@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-<<<<<<< HEAD
+
     apibtn=document.getElementById('apibtn')
     namebtn=document.getElementById('namebtn')
     
@@ -8,15 +8,13 @@ document.addEventListener("DOMContentLoaded", function() {
     
 
 
-=======
-    const btn = document.querySelector('button');
->>>>>>> parent of c72606c (better targeting of elements)
+
     btn.addEventListener('click',() =>{
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
             chrome.tabs.sendMessage(tabs[0].id, {action: "A"});
         });
     })
-<<<<<<< HEAD
+
 });
 
 // Récupérer la clé API et mettre à jour le placeholder
@@ -72,6 +70,3 @@ function saveFullName(fullName) {
         console.log('Full name saved:', fullName);
     });
 }
-=======
-});
->>>>>>> parent of c72606c (better targeting of elements)

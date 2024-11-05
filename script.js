@@ -22,8 +22,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 });
 
 
-
-<<<<<<< HEAD
 function f1(apiKey,id) {
     if (!apiKey){
         alert("please enter an openAI api key")
@@ -31,14 +29,7 @@ function f1(apiKey,id) {
     console.log("apikey :",apiKey); // Affiche la clé récupérée
     if(document.querySelector('input[name="subjectbox"]').value){
         Object = document.querySelector('input[name="subjectbox"]').value
-=======
-function f1() {
 
-    
-
-    if(document.getElementById(':50').value){
-        Object = document.getElementById(':50').value
->>>>>>> parent of c72606c (better targeting of elements)
     }
     else{
         Object = "Il n'y a pas d'objet"
@@ -77,11 +68,7 @@ function f1() {
         - si il n'y a pas d'objet, déduit le du corps
         - si il n'y a pas de corps propose en un a partir de l'objet
         - Précise "Objet :" avant de mettre l'objet et "Corps :" avant le corps
-<<<<<<< HEAD
         - Les # sont des commentaire contenant informations ou instructions que tu devras prendre en compte la rédaction du mail
-    
-=======
->>>>>>> parent of c72606c (better targeting of elements)
 
     L'objet :
     ${Object}
@@ -130,10 +117,6 @@ function f1() {
 
 async function chatWithGPT(prompt,apiKey) {
     // const apiKey =  // You said you will handle this
-<<<<<<< HEAD
-=======
-    // I said you will handle this take you credit card and buy an API key
->>>>>>> parent of c72606c (better targeting of elements)
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
     try {

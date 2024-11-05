@@ -10,11 +10,11 @@
     ],
     "icons":
     {
-     "128": "Logo1.png"
+     "128": "Logo.png"
     },
     "action": {
       "default_popup": "popup.html",
-      "default_icon": "Logo1.png"
+      "default_icon": "Logo.png"
     },
     "content_scripts": [
       {
