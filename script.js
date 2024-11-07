@@ -68,7 +68,7 @@ function f1(apiKey,id) {
         - si il n'y a pas d'objet, déduit le du corps
         - si il n'y a pas de corps propose en un a partir de l'objet
         - Précise "Objet :" avant de mettre l'objet et "Corps :" avant le corps
-        - Les # sont des commentaire contenant informations ou instructions que tu devras prendre en compte la rédaction du mail
+        - Les # sont des commentaire contenant informations ou instructions que tu devras prendre en compte la rédaction du mail supprime les dans le rendu final
 
     L'objet :
     ${Object}
