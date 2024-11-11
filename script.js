@@ -6,12 +6,12 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
         getFullName(function(fullName) {
             if (fullName) {
                 userFullName = fullName; // Assigner la valeur à la variable externe
-                console.log("fn",userFullName)
+                
             }
             getApiKey(function(apiKey) {
                 var receiver = apiKey; // `receiver` contient maintenant la clé récupérée
                 f1(receiver,userFullName)
-                console.log("fn",userFullName)
+                console.log("userName :",userFullName)
             });
        
         });
@@ -50,7 +50,7 @@ function f1(apiKey,id) {
     }
     //si non (BodyP && BodyP.children.length > 0) et non (document.getElementById(':50').value)
     if(!document.getElementById(':50').value && (!BodyP.children[0].textContent.trim() !== "")){
-        alert("pas trouvé ton bail zebi")
+        alert("no object and no body found")
         return
     }
 

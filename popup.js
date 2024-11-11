@@ -36,10 +36,7 @@ getFullName(function(fullName) {
 apibtn.addEventListener("click", function(){
     apiKey = document.getElementById('api').value
     saveApiKey(apiKey)
-    // getApiKey(function(apiKey) {
-    //     const receiver = apiKey; // `receiver` contient maintenant la clé récupérée
-    //     alert(receiver); // Affiche la clé récupérée
-    // });
+    
     })
 namebtn.addEventListener("click", function(){
     fullName = document.getElementById('name').value
